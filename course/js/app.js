@@ -28,6 +28,14 @@ var hello = new Vue({
         removeElement: function(e, index){
             e.preventDefault();
             this.elements.splice(index, 1); // splice remove/add itens no array dependendo do que passa nos parametros dele
+        },
+
+        myClick: function(){
+            alert('click');
+        },
+
+        myKeyUp: function(){
+            alert('myKeyUp');
         }
     }
 });
