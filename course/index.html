@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>My Books</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+
 </head>
 <body>
+
     <div class="container" id="hello">
+
         <div class="row">
+
             <h1>{{ msg }}</h1>
             <input class="form-control" type="text" v-model="msg">
+
         </div>
+
         <div class="row">
+
             <h1>Minha lista</h1>
+
             <ul>
                 <li v-for="pessoa in pessoas">
                     {{ pessoa.nome }}
                 </li>
             </ul>
+
         </div>
+
+        <div class="row">
+
+            <h1>Minha lista de elementos</h1>
+            <!-- v-on para dizer o evento passando um parametro. Neste exemplo o "keyup.enter" quando apertar a tecla enter -->
+            <input class="form-control" type="text" v-model="newElement" v-on:keyup.enter="addElement">
+
+            <ul>
+                <li v-for="element in elements">
+                    {{ element.title }}
+                    <a href="#" v-on:click="removeElement($event, $index)">X</a> <!-- $event para usar um evento, pegando um index $index -->
+                </li>
+            </ul>
+
+        </div>
+
     </div>
 
     <script src="node_modules/vue/dist/vue.js"></script>
