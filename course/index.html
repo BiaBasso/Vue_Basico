@@ -64,10 +64,25 @@
             <p :class="{ 'text-danger': 2 === 1, 'text-info': true }">:text</p> <!-- v-bind na forma reduzida -->
             <p :style="{ fontSize: 30 + 'px' }">Style</p> <!-- Mexendo com estilo -->
             <p :style="{ 'font-size': 30 + 'px' }">Style css</p> <!-- Usando o nome do css mesmo -->
-            <p :style="[objectA, objectB]">Object A e Object B</p>
-            <p v-bind:="{id: 1 === 1, name: true}">bind attribute</p>
+            <p :style="[objectA, objectB]">Object A e Object B</p> <!-- Mudou a frase usando as variaveis de estilo -->
+            <p v-bind:="{id: 1 === 1, name: true}">bind attribute</p> <!-- Adicionou atributos, o id e o nome -->
 
         </div>
+
+        <div class="row">
+
+            <h1>v-model</h1> <!-- seta variaveis que são declaradas no vue -->
+            <ul>
+                <li v-for="myList in myListForm">
+                    {{ myList.name }} - {{ myList.email }}
+                </li>
+            </ul>
+            <input type="text" v-model="myForm.name" placeholder="Nome">
+            <input type="text" v-model="myForm.email" placeholder="Email">
+            <button @click="addForm">Add</button>
+
+        </div>
+        <br><br><br>
 
     </div>
 
