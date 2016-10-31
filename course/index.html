@@ -46,6 +46,17 @@
 
         </div>
 
+        <div class="row">
+
+            <h1>v-on</h1>
+            <button v-on:click="myClick">Clique</button>
+            <button @click="myClick">@Clique</button> <!-- Faz o mesmo do v-on -->
+            <input type="text" @keyup="myKeyUp" placeholder="myKeyUp"> <!-- qualquer tecla, ele aciona o metodo myKeyUp -->
+            <input type="text" @keyup.enter="myKeyUp" placeholder="myKeyUp.enter"> <!-- Aciona o metodo apenas quando clica no enter -->
+            <input type="text" @keyup.13="myKeyUp" placeholder="myKeyUp.13"> <!-- Aciona o metodo apenas quando clica no enter pelo codigo da tecla do teclado -->
+
+        </div>
+
     </div>
 
     <script src="node_modules/vue/dist/vue.js"></script>
