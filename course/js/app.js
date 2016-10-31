@@ -11,7 +11,15 @@ var hello = new Vue({
             {nome: "Amanda"}
         ],
         newElement:'',
-        elements: []
+        elements: [],
+
+        objectA: {
+            'font-size':'30px'
+        },
+        objectB: {
+            color: "green"
+        }
+
     },
 
     // para declarar os metodos
