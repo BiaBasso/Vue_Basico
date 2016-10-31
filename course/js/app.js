@@ -18,6 +18,13 @@ var hello = new Vue({
         },
         objectB: {
             color: "green"
+        },
+
+        myListForm: [],
+
+        myForm: {
+            name: '',
+            email: ''
         }
 
     },
@@ -44,6 +51,12 @@ var hello = new Vue({
 
         myKeyUp: function(){
             alert('myKeyUp');
+        },
+
+        addForm: function () {
+            this.myListForm.push({name: this.myForm.name, email: this.myForm.email});
+            this.myForm.name = '';
+            this.myForm.email = '';
         }
     }
 });
