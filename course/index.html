@@ -57,6 +57,18 @@
 
         </div>
 
+        <div class="row">
+
+            <h1>v-bind</h1> <!-- Para criar implementações com classe, utilizando teste/condição, podendo ser mais de uma condição. Ex: -->
+            <p v-bind:class="{ 'text-danger': 2 === 1, 'text-info': true }">text</p>
+            <p :class="{ 'text-danger': 2 === 1, 'text-info': true }">:text</p> <!-- v-bind na forma reduzida -->
+            <p :style="{ fontSize: 30 + 'px' }">Style</p> <!-- Mexendo com estilo -->
+            <p :style="{ 'font-size': 30 + 'px' }">Style css</p> <!-- Usando o nome do css mesmo -->
+            <p :style="[objectA, objectB]">Object A e Object B</p>
+            <p v-bind:="{id: 1 === 1, name: true}">bind attribute</p>
+
+        </div>
+
     </div>
 
     <script src="node_modules/vue/dist/vue.js"></script>
