@@ -1,6 +1,6 @@
 var hello = new Vue({
     el:'#hello',
-    // para criar variaveis
+    // para declarar variaveis
     data: {
         msg: "Hello Vue!",
         pessoas: [
@@ -9,6 +9,25 @@ var hello = new Vue({
             {nome: "Isabela"},
             {nome: "Jessica"},
             {nome: "Amanda"}
-        ]
+        ],
+        newElement:'',
+        elements: []
+    },
+
+    // para declarar os metodos
+    methods:{
+        addElement: function(e){
+            var title = this.newElement.trim(); // trim tira os espaços
+            if(title){
+                this.elements.push({title:title});
+
+                this.newElement = "";
+            }
+        },
+
+        removeElement: function(e, index){
+            e.preventDefault();
+            this.elements.splice(index, 1); // splice remove/add itens no array dependendo do que passa nos parametros dele
+        }
     }
 });
