@@ -3,7 +3,9 @@ var app = new Vue({
    // para declarar variaveis
     data: {
 
-        books: []
+        books: [],
+
+        MySearch: ''
 
 /*        msg: "Hello Vue!",
         pessoas: [
