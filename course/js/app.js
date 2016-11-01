@@ -99,7 +99,7 @@ var app = new Vue({
 
         },
 
-        pagePagination:function(e, id){
+        pagePagination:function(e, current){
 
             e.preventDefault();
 
@@ -108,6 +108,10 @@ var app = new Vue({
             console.log('totalItems: ' + this.pagination.totalItems);
             console.log('totalPages: ' + this.pagination.totalPages);
             console.log('listPagination: ' + this.pagination.listPagination);
+
+            this.pagination.current = current + 1;
+
+            this.books = this.pagination.listPagination[current];
 
         }
 
