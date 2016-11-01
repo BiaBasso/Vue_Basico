@@ -83,13 +83,16 @@
 
             <nav aria-label="Page navigation" class="text-center">
                 <ul class="pagination">
-                    <li>
+                    <li v-bind:class="{ 'disabled': pagination.current === 1 }">
                         <a href="#" v-on:click="previous" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li><a href="#" @click="pagePagination($event, 1)">1</a></li>
-                    <li>
+                    <li v-for="page in pagination.listPagination" v-bind:class="{ 'active': pagination.current === $index + 1 }">
+                        <a href="#" @click="pagePagination($event, $index)">{{ $index + 1 }}</a>
+                    </li>
+
+                    <li v-bind:class="{ 'disabled': pagination.current === pagination.totalPages }">
                         <a href="#" @click="next" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
