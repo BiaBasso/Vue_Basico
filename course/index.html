@@ -27,21 +27,55 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Value</th>
-                        <th>Description</th>
+                        <th>
+                            <i class="fa fa-fw fa-sort"
+                               v-bind:class="{
+                                    'fa-sort-amount-asc': orderCol === 'id' && orderInverse === 1 ,
+                                    'fa-sort-amount-desc': orderCol === 'id' && orderInverse === -1
+                               }">
+                            </i>
+                            <a href="#" v-on:click="filterOrderBy($event, 'id')">Id</a>
+                        </th>
+                        <th>
+                            <i class="fa fa-fw fa-sort"
+                               v-bind:class="{
+                                    'fa-sort-amount-asc': orderCol === 'title' && orderInverse === 1 ,
+                                    'fa-sort-amount-desc': orderCol === 'title' && orderInverse === -1
+                               }">
+                            </i>
+                            <a href="#" v-on:click="filterOrderBy($event, 'title')">Title</a>
+                        </th>
+                        <th>
+                            <i class="fa fa-fw fa-sort"
+                               v-bind:class="{
+                                    'fa-sort-amount-asc': orderCol === 'value' && orderInverse === 1 ,
+                                    'fa-sort-amount-desc': orderCol === 'value' && orderInverse === -1
+                               }">
+                            </i>
+                            <a href="#" v-on:click="filterOrderBy($event, 'value')">Value</a>
+                        </th>
+                        <th>
+                            <i class="fa fa-fw fa-sort"
+                               v-bind:class="{
+                                    'fa-sort-amount-asc': orderCol === 'description' && orderInverse === 1 ,
+                                    'fa-sort-amount-desc': orderCol === 'description' && orderInverse === -1
+                               }">
+                            </i>
+                            <a href="#" v-on:click="filterOrderBy($event, 'description')">Description</a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                 <!-- Fazendo um filtro usando filterBy do vue e a variavel declara lá em cima e até mesmo com parametros de filtro -->
-                <!-- | isso é usado para colocar os filtros no vue -->
-                    <tr v-for="book in books | filterBy MySearch 'title' 'description' ">
+                <!-- | (paipline) isso é usado para colocar os filtros no vue -->
+                <!-- pluralize book.title coloca no plural, mas precisa de um parametro para saber o que deixar no plural -->
+                <!-- capitalize deixa a primeira letra maiuscula -->
+                <!-- currency transforma em moeda -->
+                <!-- orderBy '' ele organiza de acordo com os parametros, o -1 deixa em ordem decrescente e 1 em ordem crescente -->
+                    <tr v-for="book in books | filterBy MySearch 'title' 'description' | orderBy orderCol orderInverse ">
                         <td>{{ book.id }}</td>
-                        <!-- pluralize book.title coloca no plural, mas precisa de um parametro para saber o que deixar no plural -->
-                        <!-- capitalize deixa a primeira letra maiuscula -->
                         <td>{{ book.title | uppercase }}</td>
-                        <td>{{ book.value | currency }}</td> <!-- currency transforma em moeda -->
+                        <td>{{ book.value | currency  }}</td>
                         <td>{{ book.description }}</td>
                     </tr>
                 </tbody>
