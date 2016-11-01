@@ -42,10 +42,30 @@ var app = new Vue({
     methods: {
 
         filterOrderBy: function (e, col) {
+
+            e.preventDefault();
             this.orderCol = col;
             this.orderInverse = this.orderInverse * -1;
 
             console.log(this.orderInverse);
+        },
+
+        previous: function (e) {
+
+            e.preventDefault();
+            alert('previous');
+        },
+
+        next: function (e) {
+
+            e.preventDefault();
+            alert('next');
+        },
+
+        pagePagination:function(e, id){
+
+            e.preventDefault();
+            alert('pagePagination ' + id);
         }
 
 /*        addElement: function(e){
