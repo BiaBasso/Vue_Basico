@@ -1,8 +1,11 @@
-var hello = new Vue({
-    el:'#hello',
-    // para declarar variaveis
+var app = new Vue({
+    el:'#app',
+   // para declarar variaveis
     data: {
-        msg: "Hello Vue!",
+
+        books: []
+
+/*        msg: "Hello Vue!",
         pessoas: [
             {nome: "Maria"},
             {nome: "Pedro"},
@@ -25,13 +28,14 @@ var hello = new Vue({
         myForm: {
             name: '',
             email: ''
-        }
+        }*/
 
     },
 
     // para declarar os metodos
-    methods:{
-        addElement: function(e){
+    methods: {
+
+/*        addElement: function(e){
             var title = this.newElement.trim(); // trim tira os espaços
             if(title){
                 this.elements.push({title:title});
@@ -57,6 +61,19 @@ var hello = new Vue({
             this.myListForm.push({name: this.myForm.name, email: this.myForm.email});
             this.myForm.name = '';
             this.myForm.email = '';
-        }
+        }*/
+    },
+
+    // ready executa as coisas dentro dele assim que inicializa a página
+    ready: function(){
+
+        var self = this; // Para não perder a referencia do this, criou essa variavel e atribuiu o valor dele nela
+
+        self.$http.get('dataServer.json').then(function(response){
+
+            //console.log(response);
+
+            self.books = response.data; // assim já tem a lista na variavel books
+        });
     }
 });
