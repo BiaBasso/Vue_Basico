@@ -5,7 +5,11 @@ var app = new Vue({
 
         books: [],
 
-        MySearch: ''
+        MySearch: '',
+
+        orderCol: 'id',
+
+        orderInverse: 1,
 
 /*        msg: "Hello Vue!",
         pessoas: [
@@ -36,6 +40,13 @@ var app = new Vue({
 
     // para declarar os metodos
     methods: {
+
+        filterOrderBy: function (e, col) {
+            this.orderCol = col;
+            this.orderInverse = this.orderInverse * -1;
+
+            console.log(this.orderInverse);
+        }
 
 /*        addElement: function(e){
             var title = this.newElement.trim(); // trim tira os espaços
