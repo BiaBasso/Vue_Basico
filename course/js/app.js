@@ -75,6 +75,8 @@ var app = new Vue({
             }
             this.pagination.current = this.pagination.current - 1;
 
+            this.books = this.pagination.listPagination[this.pagination.current - 1];
+
         },
 
         next: function (e) {
@@ -92,6 +94,8 @@ var app = new Vue({
                 return false;
             }
             this.pagination.current = this.pagination.current + 1;
+
+            this.books = this.pagination.listPagination[this.pagination.current - 1];
 
         },
 
@@ -146,10 +150,27 @@ var app = new Vue({
             //console.log(response);
 
             self.pagination.totalItems = response.data.length;
-
             self.pagination.totalPages = Math.ceil(response.data.length / self.pagination.maxPage); // Math.ceil arredonda pra cima
 
-            self.books = response.data; // assim já tem a lista na variavel books
+            var aux = [];
+            for(var k in response.data){
+
+                aux.push(response.data[k]);
+
+                if(aux.length === self.pagination.maxPage){
+
+                    self.pagination.listPagination.push(aux);
+                    aux = [];
+                }
+            }
+
+            if(aux.length > 0){
+                self.pagination.listPagination.push(aux);
+            }
+
+            console.log(self.pagination.listPagination);
+
+            self.books = self.pagination.listPagination[0]; // assim já tem a lista na variavel books
         });
     }
 });
