@@ -16,8 +16,7 @@ var app = new Vue({
             maxPage: 4,
             current: 1,
             totalItems: 0,
-            totalPages: 5,
-            listNumbers: [],
+            totalPages: 0,
             listPagination: []
         }
 
@@ -68,7 +67,6 @@ var app = new Vue({
             console.log('current: ' + this.pagination.current);
             console.log('totalItems: ' + this.pagination.totalItems);
             console.log('totalPages: ' + this.pagination.totalPages);
-            console.log('listNumbers: ' + this.pagination.listNumbers);
             console.log('listPagination: ' + this.pagination.listPagination);
 
             if(this.pagination.current === 1){
@@ -87,7 +85,6 @@ var app = new Vue({
             console.log('current: ' + this.pagination.current);
             console.log('totalItems: ' + this.pagination.totalItems);
             console.log('totalPages: ' + this.pagination.totalPages);
-            console.log('listNumbers: ' + this.pagination.listNumbers);
             console.log('listPagination: ' + this.pagination.listPagination);
 
             if(this.pagination.current === this.pagination.totalPages){
@@ -106,7 +103,6 @@ var app = new Vue({
             console.log('current: ' + this.pagination.current);
             console.log('totalItems: ' + this.pagination.totalItems);
             console.log('totalPages: ' + this.pagination.totalPages);
-            console.log('listNumbers: ' + this.pagination.listNumbers);
             console.log('listPagination: ' + this.pagination.listPagination);
 
         }
@@ -148,6 +144,10 @@ var app = new Vue({
         self.$http.get('dataServer.json').then(function(response){
 
             //console.log(response);
+
+            self.pagination.totalItems = response.data.length;
+
+            self.pagination.totalPages = Math.ceil(response.data.length / self.pagination.maxPage); // Math.ceil arredonda pra cima
 
             self.books = response.data; // assim já tem a lista na variavel books
         });
