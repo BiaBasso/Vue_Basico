@@ -11,6 +11,16 @@ var app = new Vue({
 
         orderInverse: 1,
 
+        pagination:{
+
+            maxPage: 4,
+            current: 1,
+            totalItems: 0,
+            totalPages: 5,
+            listNumbers: [],
+            listPagination: []
+        }
+
 /*        msg: "Hello Vue!",
         pessoas: [
             {nome: "Maria"},
@@ -53,19 +63,52 @@ var app = new Vue({
         previous: function (e) {
 
             e.preventDefault();
-            alert('previous');
+
+            console.log('maxPage: ' + this.pagination.maxPage);
+            console.log('current: ' + this.pagination.current);
+            console.log('totalItems: ' + this.pagination.totalItems);
+            console.log('totalPages: ' + this.pagination.totalPages);
+            console.log('listNumbers: ' + this.pagination.listNumbers);
+            console.log('listPagination: ' + this.pagination.listPagination);
+
+            if(this.pagination.current === 1){
+
+                return false;
+            }
+            this.pagination.current = this.pagination.current - 1;
+
         },
 
         next: function (e) {
 
             e.preventDefault();
-            alert('next');
+
+            console.log('maxPage: ' + this.pagination.maxPage);
+            console.log('current: ' + this.pagination.current);
+            console.log('totalItems: ' + this.pagination.totalItems);
+            console.log('totalPages: ' + this.pagination.totalPages);
+            console.log('listNumbers: ' + this.pagination.listNumbers);
+            console.log('listPagination: ' + this.pagination.listPagination);
+
+            if(this.pagination.current === this.pagination.totalPages){
+
+                return false;
+            }
+            this.pagination.current = this.pagination.current + 1;
+
         },
 
         pagePagination:function(e, id){
 
             e.preventDefault();
-            alert('pagePagination ' + id);
+
+            console.log('maxPage: ' + this.pagination.maxPage);
+            console.log('current: ' + this.pagination.current);
+            console.log('totalItems: ' + this.pagination.totalItems);
+            console.log('totalPages: ' + this.pagination.totalPages);
+            console.log('listNumbers: ' + this.pagination.listNumbers);
+            console.log('listPagination: ' + this.pagination.listPagination);
+
         }
 
 /*        addElement: function(e){
