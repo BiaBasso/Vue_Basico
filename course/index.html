@@ -81,6 +81,22 @@
                 </tbody>
             </table>
 
+            <nav aria-label="Page navigation" class="text-center">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" v-on:click="previous" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#" @click="pagePagination($event, 1)">1</a></li>
+                    <li>
+                        <a href="#" @click="next" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
 
 
