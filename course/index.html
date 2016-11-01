@@ -10,68 +10,78 @@
 </head>
 <body>
 
-    <div class="container" id="hello">
+    <div class="container" id="app">
 
         <div class="row">
-
-            <h1>{{ msg }}</h1>
-            <input class="form-control" type="text" v-model="msg">
-
+            <h1>Books</h1>
         </div>
 
         <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="book in books">
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.value }}</td>
+                        <td>{{ book.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
+        </div>
+
+
+<!-- fica dentro do div class="container"
+        <div class="row">
+            <h1>{{ msg }}</h1>
+            <input class="form-control" type="text" v-model="msg">
+        </div>
+        <div class="row">
             <h1>Minha lista</h1>
-
             <ul>
                 <li v-for="pessoa in pessoas">
                     {{ pessoa.nome }}
                 </li>
             </ul>
-
         </div>
-
         <div class="row">
-
             <h1>Minha lista de elementos</h1>
-            <!-- v-on para dizer o evento passando um parametro. Neste exemplo o "keyup.enter" quando apertar a tecla enter -->
+            &lt;!&ndash; v-on para dizer o evento passando um parametro. Neste exemplo o "keyup.enter" quando apertar a tecla enter &ndash;&gt;
             <input class="form-control" type="text" v-model="newElement" v-on:keyup.enter="addElement">
-
             <ul>
                 <li v-for="element in elements">
                     {{ element.title }}
-                    <a href="#" v-on:click="removeElement($event, $index)">X</a> <!-- $event para usar um evento, pegando um index $index -->
+                    <a href="#" v-on:click="removeElement($event, $index)">X</a> &lt;!&ndash; $event para usar um evento, pegando um index $index &ndash;&gt;
                 </li>
             </ul>
-
         </div>
-
         <div class="row">
-
             <h1>v-on</h1>
             <button v-on:click="myClick">Clique</button>
-            <button @click="myClick">@Clique</button> <!-- Faz o mesmo do v-on -->
-            <input type="text" @keyup="myKeyUp" placeholder="myKeyUp"> <!-- qualquer tecla, ele aciona o metodo myKeyUp -->
-            <input type="text" @keyup.enter="myKeyUp" placeholder="myKeyUp.enter"> <!-- Aciona o metodo apenas quando clica no enter -->
-            <input type="text" @keyup.13="myKeyUp" placeholder="myKeyUp.13"> <!-- Aciona o metodo apenas quando clica no enter pelo codigo da tecla do teclado -->
-
+            <button @click="myClick">@Clique</button> &lt;!&ndash; Faz o mesmo do v-on &ndash;&gt;
+            <input type="text" @keyup="myKeyUp" placeholder="myKeyUp"> &lt;!&ndash; qualquer tecla, ele aciona o metodo myKeyUp &ndash;&gt;
+            <input type="text" @keyup.enter="myKeyUp" placeholder="myKeyUp.enter"> &lt;!&ndash; Aciona o metodo apenas quando clica no enter &ndash;&gt;
+            <input type="text" @keyup.13="myKeyUp" placeholder="myKeyUp.13"> &lt;!&ndash; Aciona o metodo apenas quando clica no enter pelo codigo da tecla do teclado &ndash;&gt;
         </div>
-
         <div class="row">
-
-            <h1>v-bind</h1> <!-- Para criar implementações com classe, utilizando teste/condição, podendo ser mais de uma condição. Ex: -->
+            <h1>v-bind</h1> &lt;!&ndash; Para criar implementações com classe, utilizando teste/condição, podendo ser mais de uma condição. Ex: &ndash;&gt;
             <p v-bind:class="{ 'text-danger': 2 === 1, 'text-info': true }">text</p>
-            <p :class="{ 'text-danger': 2 === 1, 'text-info': true }">:text</p> <!-- v-bind na forma reduzida -->
-            <p :style="{ fontSize: 30 + 'px' }">Style</p> <!-- Mexendo com estilo -->
-            <p :style="{ 'font-size': 30 + 'px' }">Style css</p> <!-- Usando o nome do css mesmo -->
-            <p :style="[objectA, objectB]">Object A e Object B</p> <!-- Mudou a frase usando as variaveis de estilo -->
-            <p v-bind:="{id: 1 === 1, name: true}">bind attribute</p> <!-- Adicionou atributos, o id e o nome -->
-
+            <p :class="{ 'text-danger': 2 === 1, 'text-info': true }">:text</p> &lt;!&ndash; v-bind na forma reduzida &ndash;&gt;
+            <p :style="{ fontSize: 30 + 'px' }">Style</p> &lt;!&ndash; Mexendo com estilo &ndash;&gt;
+            <p :style="{ 'font-size': 30 + 'px' }">Style css</p> &lt;!&ndash; Usando o nome do css mesmo &ndash;&gt;
+            <p :style="[objectA, objectB]">Object A e Object B</p> &lt;!&ndash; Mudou a frase usando as variaveis de estilo &ndash;&gt;
+            <p v-bind:="{id: 1 === 1, name: true}">bind attribute</p> &lt;!&ndash; Adicionou atributos, o id e o nome &ndash;&gt;
         </div>
-
         <div class="row">
-
-            <h1>v-model</h1> <!-- seta variaveis que são declaradas no vue -->
+            <h1>v-model</h1> &lt;!&ndash; seta variaveis que são declaradas no vue &ndash;&gt;
             <ul>
                 <li v-for="myList in myListForm">
                     {{ myList.name }} - {{ myList.email }}
@@ -80,9 +90,9 @@
             <input type="text" v-model="myForm.name" placeholder="Nome">
             <input type="text" v-model="myForm.email" placeholder="Email">
             <button @click="addForm">Add</button>
-
         </div>
         <br><br><br>
+-->
 
     </div>
 
