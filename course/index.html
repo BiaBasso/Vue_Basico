@@ -35,10 +35,13 @@
                 </thead>
                 <tbody>
                 <!-- Fazendo um filtro usando filterBy do vue e a variavel declara lá em cima e até mesmo com parametros de filtro -->
+                <!-- | isso é usado para colocar os filtros no vue -->
                     <tr v-for="book in books | filterBy MySearch 'title' 'description' ">
                         <td>{{ book.id }}</td>
-                        <td>{{ book.title }}</td>
-                        <td>{{ book.value }}</td>
+                        <!-- pluralize book.title coloca no plural, mas precisa de um parametro para saber o que deixar no plural -->
+                        <!-- capitalize deixa a primeira letra maiuscula -->
+                        <td>{{ book.title | uppercase }}</td>
+                        <td>{{ book.value | currency }}</td> <!-- currency transforma em moeda -->
                         <td>{{ book.description }}</td>
                     </tr>
                 </tbody>
